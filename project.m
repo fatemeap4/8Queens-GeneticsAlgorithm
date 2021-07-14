@@ -113,6 +113,7 @@ if GenerationRound <= 0
 end
 
 %% all Functions
+
 function FindFit = FindFitnessForChrom(chrom)   % calculate Population Fitness
     threat = config_threat(chrom);
     if threat > 0
@@ -163,6 +164,7 @@ function SelectPop = SelectionPopulation(individual,population, count)    % for 
 end
 
 
+%select 2 Chromosom from 5 previous parents
 function GetParents= TwoOfSelectionPop (SelectedPop)
     numElem = numel(SelectedPop);
     [~,sortOrder] = sort([SelectedPop.Fitness]);
@@ -171,7 +173,7 @@ function GetParents= TwoOfSelectionPop (SelectedPop)
     GetParents = [parents(end-1); parents(end)];
 end
 
-
+% a function for combination 2 parents and make 2 new children
 function combine = cross_over(parents)
     Break = randi(6,1,1);
     childs = parents;
